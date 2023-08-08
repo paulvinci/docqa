@@ -21,9 +21,11 @@ st.markdown(f"""
          </style>
          """, unsafe_allow_html=True)
 
+with st.sidebar:
+    api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
+
 # Initialize model, vector stores
 # Import LLM
-api_key = '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'
 llm = OpenAI(temperature=0.7, openai_api_key=api_key)
 embeddings = OpenAIEmbeddings(openai_api_key=api_key)
 
