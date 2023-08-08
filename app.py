@@ -23,7 +23,7 @@ st.markdown(f"""
 
 # Initialize model, vector stores
 # Import LLM
-api_key = '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'
+api_key = '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'
 llm = OpenAI(temperature=0.7, openai_api_key=api_key)
 embeddings = OpenAIEmbeddings(openai_api_key=api_key)
 
