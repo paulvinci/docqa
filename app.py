@@ -3,16 +3,16 @@ import streamlit as st
 import time
 import os
 from langchain.document_loaders import TextLoader, Docx2txtLoader
-from langchain.vectorstores import Chroma, FAISS
+from langchain.vectorstores import FAISS
 from langchain.chains import LLMChain
-from langchain.llms import LlamaCpp
-from langchain.embeddings import LlamaCppEmbeddings
+from langchain.llms import OpenAI
+from langchain.embeddings import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain import PromptTemplate
 
 
 # Customize the layout
-st.set_page_config(page_title="DOCAI", page_icon="🤖", layout="wide")     
+st.set_page_config(page_title="LOM ASSISTANT", page_icon="👑", layout="wide")     
 st.markdown(f"""
             <style>
             .stApp {{background-image: url("https://images.unsplash.com/photo-1682685797366-715d29e33f9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"); 
@@ -23,9 +23,9 @@ st.markdown(f"""
 
 # Initialize model, vector stores
 # Import LLM
-path = './models/llama-2-7b-chat.ggmlv3.q2_K.bin'
-llm = LlamaCpp(model_path=path, num_output=500, verbose=True, n_ctx=3000)
-embeddings = LlamaCppEmbeddings(model_path=path)
+api_key = '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'
+llm = OpenAI(temperature=0.7, openai_api_key=api_key)
+embeddings = OpenAIEmbeddings(openai_api_key=api_key)
 
 # Load Vector Stores
 path_vectorstores='./vectorstores/faiss/'
@@ -59,5 +59,5 @@ if question:
     response = query_llm.run({'context':context,'question':question})
     toc = time.perf_counter()
     exec_time = time.strftime("%M:%S", time.gmtime(toc - tic))
-    st.write(response)
-    st.write(f'Execution time: {exec_time} minutes')
+    st.info(response)
+    st.info(f'Execution time: {exec_time} minutes')
