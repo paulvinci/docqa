@@ -21,44 +21,12 @@ st.markdown(f"""
          </style>
          """, unsafe_allow_html=True)
 
-with st.sidebar:
-    api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
-
-# Initialize model, vector stores
-# Import LLM
-llm = OpenAI(temperature=0.7, openai_api_key=api_key)
-embeddings = OpenAIEmbeddings(openai_api_key=api_key)
-
-# Load Vector Stores
-path_vectorstores='./vectorstores/faiss/'
-db = FAISS.load_local(path_vectorstores, embeddings)
-
-# Craft a prompt template that works best for your LLM
-prompt_template = """
-[INST] <<SYS>>
-Use the following pieces of information to answer the user's question.
-Please ensure that your responses are socially unbiased and positive in nature.
-If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct.
-If you don't know the answer, just say that you don't know, don't try to make up an answer.
-<</SYS>>
-Context: {context}
-Question: {question}
-Only return the helpful answer below and nothing else.
-Helpful answer: [/INST]"""
-
-# Context will be the similar doc and question will be the query
-prompt = PromptTemplate.from_template(prompt_template)
-
-# Use LLM to generate answer from the context
-query_llm = LLMChain(llm=llm,prompt=prompt)
-
 # Query through LLM    
 question = st.text_input("Ask something from the file")    
 if question:
     tic = time.perf_counter()
-    similar_doc = db.similarity_search(question,k=4)
-    context = ''.join([t.page_content for t in similar_doc])
-    response = query_llm.run({'context':context,'question':question})
+    url = f'https://4c34-81-67-151-153.ngrok-free.app/search?query={question}'
+    response = requests.get(url)
     toc = time.perf_counter()
     exec_time = time.strftime("%M:%S", time.gmtime(toc - tic))
     st.info(response)
