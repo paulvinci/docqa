@@ -30,5 +30,5 @@ if question:
     response = requests.get(url)
     toc = time.perf_counter()
     exec_time = time.strftime("%M:%S", time.gmtime(toc - tic))
-    st.info(response.content)
+    st.info(response.text)
     st.info(f'Execution time: {exec_time} minutes')
