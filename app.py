@@ -2,6 +2,7 @@
 import streamlit as st 
 import time
 import os
+import requests
 from langchain.document_loaders import TextLoader, Docx2txtLoader
 from langchain.vectorstores import FAISS
 from langchain.chains import LLMChain
