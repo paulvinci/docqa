@@ -1,7 +1,7 @@
 # Bring in deps
 import streamlit as st
 from streamlit_extras.stylable_container import stylable_container
-from streamlit-text-rating.st_text_rater import st_text_rater
+from streamlit_text_rating.st_text_rater import st_text_rater
 import time
 import os
 import requests
