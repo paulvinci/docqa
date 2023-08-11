@@ -15,10 +15,9 @@ from langchain import PromptTemplate
 
 # Customize the layout
 st.set_page_config(page_title="RuLLM", page_icon="👑", layout="wide") 
-image_url = "https://images.unsplash.com/photo-1682685797828-d3b2561deef4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
 st.markdown(f"""
             <style>
-            .stApp {{background-image: url(f"{image_url}"); 
+            .stApp {{background-image: url("https://images.unsplash.com/photo-1682685797828-d3b2561deef4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"); 
                      background-attachment: fixed;
                      background-size: cover}}
          </style>
