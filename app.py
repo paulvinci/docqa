@@ -17,7 +17,7 @@ from langchain import PromptTemplate
 st.set_page_config(page_title="RuLLM", page_icon="👑", layout="wide") 
 st.markdown(f"""
             <style>
-            .stApp {{background-image: url("https://images.unsplash.com/photo-1682685797828-d3b2561deef4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"); 
+            .stApp {{background-image: url("https://images.unsplash.com/photo-1691466065738-1abe6adbbdd5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80"); 
                      background-attachment: fixed;
                      background-size: cover}}
          </style>
@@ -44,7 +44,7 @@ if question:
             {
                 background-color: lightgrey;
                 color: black;
-                border: 1px solid rgba(239,239,240,1.000);
+                border: 1px solid rgba(239,239,240,0.3);
                 border-radius: 0.5rem;
                 padding: calc(1em - 1px)
             }
