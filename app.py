@@ -32,3 +32,4 @@ if question:
     exec_time = time.strftime("%M:%S", time.gmtime(toc - tic))
     st.info(response.text)
     st.info(f'Execution time: {exec_time} minutes')
+    st.slider('Evaluate answer - 5 being excellent answer',1,5)
