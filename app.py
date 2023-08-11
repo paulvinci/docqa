@@ -43,6 +43,8 @@ if question:
     st.write(response.text)
     st.info(f'Execution time: {exec_time} minutes')
     evaluation = st_text_rater(text='Is this reponse relevant ?')
+    score_dict = {'liked':1,'disliked':0}
+    score = score_dict['evaluation']
     if evaluation:
         df = pd.read_csv('./evaluate.csv')
         temp = pd.DataFrame({'question':question,'response':response,'evaluation':score})
