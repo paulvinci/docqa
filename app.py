@@ -52,4 +52,4 @@ if question:
             """):
         st.markdown(response.text)
     st.info(f'Execution time: {exec_time} minutes')
-    st_star_rating(label="Please rate the relevance of the answer", maxValue=4, defaultValue=0, key="rating", dark_theme=True)
+    st_text_rater(text='Is this reponse relevant ?')
