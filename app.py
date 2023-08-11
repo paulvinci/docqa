@@ -48,6 +48,6 @@ if question:
                 padding: calc(1em - 1px)
             }
             """):
-        st.markdown(stream_example(response.text)
+        st.markdown(stream_example(response.text))
     st.info(f'Execution time: {exec_time} minutes')
     st.slider('Evaluate answer - 5 being excellent answer',1,5)
