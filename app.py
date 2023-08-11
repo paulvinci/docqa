@@ -53,7 +53,7 @@ if question:
             st.write(score)
             df = pd.read_csv('./evaluate.csv')
             temp = pd.DataFrame({'question':question,'response':response,'evaluation':score})
-            df = df.append(temp)
+            df = df.concat(temp)
             df.to_csv('./evaluate.csv')
             st.dataframe(df)
     
