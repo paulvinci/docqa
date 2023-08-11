@@ -45,7 +45,7 @@ if question:
     evaluation = st_text_rater(text='Is this reponse relevant ?')
     if evaluation:
         df = pd.read_csv('./evaluate.csv')
-        temp = pd.DataFrame('question':question,'response':response,'evaluation':score)
+        temp = pd.DataFrame({'question':question,'response':response,'evaluation':score})
         df = df.append(temp)
         df.to_csv('./evaluate.csv'')
         st.dataframe(df)
