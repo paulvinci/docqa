@@ -52,4 +52,4 @@ if question:
             """):
         st.markdown(response.text)
     st.info(f'Execution time: {exec_time} minutes')
-    st_text_rater(text='Is this reponse relevant ?')
+    evaluation = st_text_rater(text='Is this reponse relevant ?')
