@@ -1,6 +1,7 @@
 streamlit
 streamlit-extras
 st-star-rating
+streamlit-text-rating
 openai
 langchain
 faiss-cpu
