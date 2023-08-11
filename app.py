@@ -13,7 +13,7 @@ from langchain import PromptTemplate
 
 
 # Customize the layout
-st.set_page_config(page_title="LOM ASSISTANT", page_icon="👑", layout="wide")     
+st.set_page_config(page_title="RuLLM", page_icon="👑", layout="wide")     
 st.markdown(f"""
             <style>
             .stApp {{background-image: url("https://images.unsplash.com/photo-1682685797366-715d29e33f9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"); 
@@ -26,7 +26,7 @@ st.markdown(f"""
 question = st.text_input("Ask something from the file")    
 if question:
     tic = time.perf_counter()
-    url = f'https://4c34-81-67-151-153.ngrok-free.app/search?query={question}'
+    url = f'https://5ad1-81-67-151-153.ngrok-free.app/search?query={question}'
     response = requests.get(url)
     toc = time.perf_counter()
     exec_time = time.strftime("%M:%S", time.gmtime(toc - tic))
