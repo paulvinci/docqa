@@ -1,6 +1,7 @@
 # Bring in deps
 import streamlit as st
 from streamlit_extras.stylable_container import stylable_container
+from streamlit_star_rating import st_star_rating
 import time
 import os
 import requests
@@ -51,4 +52,4 @@ if question:
             """):
         st.markdown(response.text)
     st.info(f'Execution time: {exec_time} minutes')
-    st.slider('Evaluate answer - 5 being excellent answer',1,5)
+    st_star_rating(label="Please rate the relevance of the answer", maxValue=4, defaultValue=0, key="rating", dark_theme=True)
