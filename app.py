@@ -12,6 +12,7 @@ from langchain.llms import OpenAI
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain import PromptTemplate
+import pandas as pd
 
 
 # Customize the layout
@@ -39,18 +40,13 @@ if question:
     toc = time.perf_counter()
     exec_time = time.strftime("%M:%S", time.gmtime(toc - tic))
     #st.info(response.text)
-    with stylable_container(
-        key="container_with_border",
-        css_styles="""
-            {
-                background-color: lightgrey;
-                color: black;
-                border: 1px solid rgba(239,239,240,0.3);
-                border-radius: 0.5rem;
-                padding: calc(1em - 1px)
-            }
-            """):
-        st.markdown(response.text)
+    st.write(response.text)
     st.info(f'Execution time: {exec_time} minutes')
     evaluation = st_text_rater(text='Is this reponse relevant ?')
-    st.write(evaluation)
+    if evaluation:
+        df = pd.read_csv('./evaluate.csv')
+        temp = pd.DataFrame('question':question,'response':response,'evaluation':score)
+        df = df.append(temp)
+        df.to_csv('./evaluate.csv'')
+        st.dataframe(df)
+    
