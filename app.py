@@ -42,8 +42,7 @@ if question:
     #st.info(response.text)
     st.write(response.text)
     st.info(f'Execution time: {exec_time} minutes')
-    evaluation = st_text_rater(text='Is this reponse relevant ?')
-    
+evaluation = st_text_rater(text='Is this reponse relevant ?')    
 if evaluation:
     score_dict = {'liked':1,'disliked':0}
     score = score_dict['evaluation']
