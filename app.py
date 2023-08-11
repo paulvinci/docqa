@@ -42,6 +42,8 @@ if question:
         key="container_with_border",
         css_styles="""
             {
+                background-color: lightgrey;
+                color: black;
                 border: 1px solid rgba(239,239,240,1.000);
                 border-radius: 0.5rem;
                 padding: calc(1em - 1px)
