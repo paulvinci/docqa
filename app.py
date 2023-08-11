@@ -1,4 +1,5 @@
 # Bring in deps
+from http.client import responses
 import streamlit as st
 from streamlit_extras.stylable_container import stylable_container
 from streamlit_text_rating.st_text_rater import st_text_rater
@@ -42,14 +43,16 @@ if question:
     #st.info(response.text)
     st.write(response.text)
     st.info(f'Execution time: {exec_time} minutes')
-evaluation = st_text_rater(text='Is this reponse relevant ?')    
-if evaluation:
-    score_dict = {'liked':1,'disliked':0}
-    score = score_dict['evaluation']
-    st.write(score)
-    df = pd.read_csv('./evaluate.csv')
-    temp = pd.DataFrame({'question':question,'response':response,'evaluation':score})
-    df = df.append(temp)
-    df.to_csv('./evaluate.csv')
-    st.dataframe(df)
+ 
+if question & responses:
+    evaluation = st_text_rater(text='Is this reponse relevant ?')   
+    if evaluation:
+        score_dict = {'liked':1,'disliked':0}
+        score = score_dict[evaluation]
+        st.write(score)
+        df = pd.read_csv('./evaluate.csv')
+        temp = pd.DataFrame({'question':question,'response':response,'evaluation':score})
+        df = df.append(temp)
+        df.to_csv('./evaluate.csv')
+        st.dataframe(df)
     
