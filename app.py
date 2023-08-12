@@ -48,9 +48,13 @@ if question:
     st.info(response.text)
     st.write(f'Execution time: {exec_time} minutes')
  
-p_gsheet_link = 'https://docs.google.com/spreadsheets/d/1MhgVwabWAT19Ax7IDP85xEESeNEaQnGsRwCIV03Vv6U/edit?usp=sharing'
-df = pd.read_csv(p_gsheet_link)
-st.dataframe(df)
+@st.cache_data()
+def load_data(sheets_url):
+    csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
+    return pd.read_csv(csv_url)
+df = load_data(st.secrets["public_gsheets_url"])
+for row in df.itertuples():
+    st.write(f"{row.name} has a :{row.pet}:")
 
 if question:
     if response:
