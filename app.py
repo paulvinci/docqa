@@ -41,13 +41,17 @@ def llm_inference(url):
 
 # Query through LLM    
 ngrok_url = "https://065e-81-67-151-153.ngrok-free.app"
-question = st.text_input("Ask something from the file")    
+question = st.text_input("Ask something from the files provided as context")    
 if question:
     url = f'{ngrok_url}/search?query={question}'
     response, exec_time = llm_inference(url)
     st.info(response.text)
     st.write(f'Execution time: {exec_time} minutes')
  
+p_gsheet_link = 'https://docs.google.com/spreadsheets/d/1MhgVwabWAT19Ax7IDP85xEESeNEaQnGsRwCIV03Vv6U/edit?usp=sharing'
+df = pd.read_csv(p_gsheet_link)
+st.dataframe(df)
+
 if question:
     if response:
         evaluation = st_text_rater(text='Is this reponse relevant ?')   
@@ -55,7 +59,6 @@ if question:
             if evaluation == 'liked' or evaluation == 'disliked':
                 score_dict = {'liked':1,'disliked':0}
                 score = score_dict[evaluation]
-                st.write(score)
                 df = pd.read_csv('./evaluate.csv')
                 temp = pd.DataFrame({'question':[question],'response':[response.text],'evaluation':[score]})
                 new_df = pd.concat([df,temp])[['question','response','evaluation']]
