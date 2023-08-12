@@ -31,13 +31,18 @@ def stream_example(response_text):
         yield word + " "
         time.sleep(0.1)
 
+@st.cache_data
+def llm_inference(url):
+    response = requests.get(url)
+    return response
+
 # Query through LLM    
 ngrok_url = "https://065e-81-67-151-153.ngrok-free.app"
 question = st.text_input("Ask something from the file")    
 if question:
     tic = time.perf_counter()
     url = f'{ngrok_url}/search?query={question}'
-    response = requests.get(url)
+    response = llm_inference(url)
     toc = time.perf_counter()
     exec_time = time.strftime("%M:%S", time.gmtime(toc - tic))
     #st.info(response.text)
