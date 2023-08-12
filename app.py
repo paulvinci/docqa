@@ -48,7 +48,6 @@ if question:
     st.info(response.text)
     st.write(f'Execution time: {exec_time} minutes')
  
-@st.cache_data()
 def load_data(sheets_url):
     csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
     return pd.read_csv(csv_url)
