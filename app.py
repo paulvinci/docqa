@@ -33,23 +33,26 @@ def stream_example(response_text):
 
 @st.cache_data
 def llm_inference(url):
+    tic = time.perf_counter()
     response = requests.get(url)
-    return response
+    toc = time.perf_counter()
+    exec_time = time.strftime("%M:%S", time.gmtime(toc - tic))
+    return response, exec_time
 
 # Query through LLM    
 ngrok_url = "https://065e-81-67-151-153.ngrok-free.app"
 question = st.text_input("Ask something from the file")    
 if question:
     url = f'{ngrok_url}/search?query={question}'
-    response = llm_inference(url)
-    toc = time.perf_counter()
+    response, exec_time = llm_inference(url)
     st.info(response.text)
+    st.write(f'Execution time: {exec_time} minutes')
  
 if question:
     if response:
         evaluation = st_text_rater(text='Is this reponse relevant ?')   
         if evaluation:
-            if evaluation != None:
+            if evaluation == 'liked' OR evaluation == 'disliked':
                 score_dict = {'liked':1,'disliked':0}
                 score = score_dict[evaluation]
                 st.write(score)
@@ -59,4 +62,6 @@ if question:
                 new_df.to_csv('./evaluate.csv')
                 st.dataframe(df)
                 st.dataframe(new_df)
+            else:
+                pass
     
