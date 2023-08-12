@@ -12,5 +12,4 @@ google_auth_httplib2
 oauth2client
 df2gspread
 pygsheets
-json
 toml
