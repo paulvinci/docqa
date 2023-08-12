@@ -14,7 +14,9 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain import PromptTemplate
 import pandas as pd
-from streamlit_gsheets import GSheetsConnection
+import gspread 
+from oauth2client.service_account import ServiceAccountCredentials
+import pygsheets
 
 
 # Customize the layout
@@ -49,9 +51,19 @@ if question:
     st.info(response.text)
     st.write(f'Execution time: {exec_time} minutes')
  
-conn = st.experimental_connection("gsheets", type=GSheetsConnection)
-data = conn.read(spreadsheet=st.secrets["public_gsheets_url"], usecols=[0, 1])
-st.dataframe(data)
+# Google Sheets
+## Loading
+spreadsheet_key = "1MhgVwabWAT19Ax7IDP85xEESeNEaQnGsRwCIV03Vv6U"
+scope = "https://spreadsheets.google.com/feeds"
+credentials = ServiceAccountCredentials.from_json_keyfile_name("./rullama-12d502af5c88.json", scope)
+worksheet = gspread.authorize(credentials).open_by_key(spreadsheet_key).worksheet("Feuille 1")
+data = worksheet.get_all_values()
+headers = data.pop(0)
+df = pd.DataFrame(data, columns=headers)
+## Updating
+gc = pygsheets.authorize(service_file='./rullama-12d502af5c88.json')
+sh = gc.open_by_url('https://docs.google.com/spreadsheets/d/1MhgVwabWAT19Ax7IDP85xEESeNEaQnGsRwCIV03Vv6U/edit?pli=1#gid=0')
+wks = sh[0]
 
 if question:
     if response:
@@ -60,10 +72,9 @@ if question:
             if evaluation == 'liked' or evaluation == 'disliked':
                 score_dict = {'liked':1,'disliked':0}
                 score = score_dict[evaluation]
-                df = pd.read_csv('./evaluate.csv')
                 temp = pd.DataFrame({'question':[question],'response':[response.text],'evaluation':[score]})
                 new_df = pd.concat([df,temp])[['question','response','evaluation']]
-                new_df.to_csv('./evaluate.csv')
+                wks.set_dataframe(new_df, 'A1')
                 st.dataframe(df)
                 st.dataframe(new_df)
             else:

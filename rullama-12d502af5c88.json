@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "rullama",
+  "private_key_id": "12d502af5c886779190f2e953f475f652f360a5f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCWUo3LHJTs+xTi\nD7MeK1Q8IWN4oxSOqTTYUCq/I+s9082G3Be5WCVB3vvh44UuIPG+IDMZf2aaDX5l\nU+AU70XiqIMaO36TRr0StiYlzAo4zuYxbhaK4zKX0K34UAfeTgVSi2YBtCvujv3k\nOFpiD36evOjhnDvjHCZ4WOxMeuUqwXkiXqBt7VNtdEfyefVE1/sHnV5U7Hc31oiV\nk/NqEIalHoDawLuvigGWCxL25uLX5UzIHp/TFxvb9xw0oLjwml60seoIt337D47h\nVYOBTTnY+5ZaUk8sio3HkVJzAOJB9mCXNsCNpXvy6HhROEY4PwGy3XWWQf9H4UPX\nn77JSa7XAgMBAAECggEACtyhOUVx72O/IQyQXUQ1PHkPJnbmM96/HkhApnoSc++7\ngJyjrDVVz9osaiiWBXzE6v+JobSGdeg2s1ypqumVK6kQfBNDdKHeZJ07yWxiarNs\nh7LUNynujHC8OV6TCvmpQcsnzkS2DfFQIC8APOiwtgihbTfsTd9JWlXWkToqF/ox\niqdRL4sjolcbsu0Rd+TdyKFn6YJ7LLK0/zxFuPyvb6nS5/irlVoUgU2VH2ZZN4kq\nF5ZIvn92n3BsPHuhtBVkECfNSqwXTH14SDkUZKFiRswilD7bLbN2BMVpv8iA3f+2\nKa8Xin5N3oZCJuNNRV4U9f8saR1eStQxiggoPhhLAQKBgQDIsdPOPO5AfGWEvxdp\nCtaecNsmW8uHnqnyISICtkc4leKwJCc9+A4AskkIYv2rb8K4V2oIudvcENjo4cgy\n797hwSFwj3BD62Hu1y/wIujUmdPu/Je1dEK1aAvhCViXOcgjNdaW9GKKp0AjIpVD\nvpfD2og6MqWK3UazI+bCbt/fAQKBgQC/vy4JQkA7wgM398vxZsaWz7o3KrUMuhNw\neyJJE3M4CdBJYr+ubGL0Wqhd8FrRE/GDgYZS/rse/AM3FftNAyIIElvSulGG2UeS\nmGmahTEtzHHibtC3C08TzJ4X2iRhD6nkie8HwK3vK2CBO6QATbzZBPO2k2KI5PgD\nwY0g4kpl1wKBgE0fCKVYBLYDF3/LbtOOtqpr88rpu2yCLAw/bzJbmULFVjcZrXrC\nt57M5AO1BoW6jLkJ3lU8FqCaWMAlAymPw7Y84PzAIgP3j8qYJnPA9ne8JRTRO/se\nkgPj16zCSqjSK3ZcWfnoL3XYj2zw/SrrMqawc2jpzXNvVJvCUAqnUKABAoGABN5V\nzOZhuyKx8jnYc8ioQiwEDmKHNkuDMtfthu13f3TAVRyswUD/QjULEVeI9sYK28vu\nHS1aku7TJhLozovF0W6l5jPU3hemOZKlG8dF+GO4gIdPxVYEK/yGBxUC13QOXD8k\nUo4R3IC9coqRH3DZ2qjFh102o0MtCOthKfSU7wECgYBvnjFtd7/O6cpkggpwfuJV\nKSDDIE3BOzJHk7N/gzxc1b+4YKHAvwoNdo3NQEwJ7YLGQpII3rT1avxDtgopWwK0\nq51L5y5A5q45//ZK4HW+P8aaGHTxY3pkzt6d5CJ8bd+74LPpF1HnhpP0/R2Yo7TV\nJmnD1K9o3O0TgPjPJSMAfg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "rullama-service-account@rullama.iam.gserviceaccount.com",
+  "client_id": "111381420248579463952",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/rullama-service-account%40rullama.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

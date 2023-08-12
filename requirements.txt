@@ -7,4 +7,7 @@ langchain
 faiss-cpu
 tiktoken
 pandas
-streamlit_gsheets
+gspread
+oauth2client
+df2gspread
+pygsheets
