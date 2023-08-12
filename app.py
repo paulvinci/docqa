@@ -55,7 +55,7 @@ if question:
 ## Loading
 spreadsheet_key = "1MhgVwabWAT19Ax7IDP85xEESeNEaQnGsRwCIV03Vv6U"
 scope = "https://spreadsheets.google.com/feeds"
-credentials = ServiceAccountCredentials.from_json_keyfile_name("./rullama-12d502af5c88.json", scope)
+credentials = st.secrets["gcp_service_account"]
 worksheet = gspread.authorize(credentials).open_by_key(spreadsheet_key).worksheet("Feuille 1")
 data = worksheet.get_all_values()
 headers = data.pop(0)
