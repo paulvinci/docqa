@@ -52,7 +52,7 @@ if question:
     if response:
         evaluation = st_text_rater(text='Is this reponse relevant ?')   
         if evaluation:
-            if evaluation == 'liked' OR evaluation == 'disliked':
+            if evaluation == 'liked' or evaluation == 'disliked':
                 score_dict = {'liked':1,'disliked':0}
                 score = score_dict[evaluation]
                 st.write(score)
