@@ -52,7 +52,7 @@ def load_data(sheets_url):
     csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
     return pd.read_csv(csv_url, on_bad_lines='skip')
 df = load_data(st.secrets["public_gsheets_url"])
-st.dataframe(df)
+st.write(df)
 
 if question:
     if response:
