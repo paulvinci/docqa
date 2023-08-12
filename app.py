@@ -60,6 +60,7 @@ worksheet = gspread.authorize(credentials).open_by_key(spreadsheet_key).workshee
 data = worksheet.get_all_values()
 headers = data.pop(0)
 df = pd.DataFrame(data, columns=headers)
+st.dataframe(df)
 ## Updating
 gc = pygsheets.authorize(service_file='./rullama-12d502af5c88.json')
 sh = gc.open_by_url('https://docs.google.com/spreadsheets/d/1lvIK4MoqqRLeIFe4XstOF8GKxpuuB9mFeauMho6jgjw/edit#gid=0')
