@@ -14,6 +14,7 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain import PromptTemplate
 import pandas as pd
+from streamlit_gsheets import GSheetsConnection
 
 
 # Customize the layout
@@ -48,10 +49,9 @@ if question:
     st.info(response.text)
     st.write(f'Execution time: {exec_time} minutes')
  
-def load_data(sheets_url):
-    csv_url = sheets_url.replace("/edit#gid=", "/export?format=csv&gid=")
-    return pd.read_csv(csv_url, on_bad_lines='skip')
-df = load_data(st.secrets["public_gsheets_url"])
+conn = st.experimental_connection("gsheets", type=GSheetsConnection)
+data = conn.read(spreadsheet=st.secrets["public_gsheets_url"], usecols=[0, 1])
+st.dataframe(data)
 
 if question:
     if response:

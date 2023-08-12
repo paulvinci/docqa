@@ -7,3 +7,4 @@ langchain
 faiss-cpu
 tiktoken
 pandas
+gsheets-connection
