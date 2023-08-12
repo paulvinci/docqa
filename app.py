@@ -40,26 +40,23 @@ def llm_inference(url):
 ngrok_url = "https://065e-81-67-151-153.ngrok-free.app"
 question = st.text_input("Ask something from the file")    
 if question:
-    tic = time.perf_counter()
     url = f'{ngrok_url}/search?query={question}'
     response = llm_inference(url)
     toc = time.perf_counter()
-    exec_time = time.strftime("%M:%S", time.gmtime(toc - tic))
-    #st.info(response.text)
-    st.write(response.text)
-    st.info(f'Execution time: {exec_time} minutes')
+    st.info(response.text)
  
 if question:
     if response:
         evaluation = st_text_rater(text='Is this reponse relevant ?')   
         if evaluation:
-            score_dict = {'liked':1,'disliked':0}
-            score = score_dict[evaluation]
-            st.write(score)
-            df = pd.read_csv('./evaluate.csv')
-            temp = pd.DataFrame({'question':[question],'response':[response.text],'evaluation':[score]})
-            new_df = pd.concat([df,temp])[['question','response','evaluation']]
-            new_df.to_csv('./evaluate.csv')
-            st.dataframe(df)
-            st.dataframe(new_df)
+            if evaluation != None:
+                score_dict = {'liked':1,'disliked':0}
+                score = score_dict[evaluation]
+                st.write(score)
+                df = pd.read_csv('./evaluate.csv')
+                temp = pd.DataFrame({'question':[question],'response':[response.text],'evaluation':[score]})
+                new_df = pd.concat([df,temp])[['question','response','evaluation']]
+                new_df.to_csv('./evaluate.csv')
+                st.dataframe(df)
+                st.dataframe(new_df)
     
