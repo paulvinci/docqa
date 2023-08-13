@@ -72,13 +72,11 @@ wks = sh[0]
 if question:
     if response:
         evaluation = st_star_rating(label="Please rate the relevance of the answer", maxValue=5, defaultValue=3, key="rating")
+        st.write(evaluation)
         if evaluation:
-            if evaluation == 'liked' or evaluation == 'disliked':
-                score_dict = {'liked':1,'disliked':0}
-                score = score_dict[evaluation]
-                temp = pd.DataFrame({'question':[question],'response':[response.text],'evaluation':[score]})
-                new_df = pd.concat([df,temp])[['question','response','evaluation']]
-                wks.set_dataframe(new_df, 'A1')
+            temp = pd.DataFrame({'question':[question],'response':[response.text],'evaluation':[evaluation]})
+            new_df = pd.concat([df,temp])[['question','response','evaluation']]
+            wks.set_dataframe(new_df, 'A1')
             else:
                 pass
     
