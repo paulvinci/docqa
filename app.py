@@ -3,6 +3,7 @@ from http.client import responses
 import streamlit as st
 from streamlit_extras.stylable_container import stylable_container
 from streamlit_text_rating.st_text_rater import st_text_rater
+from streamlit_star_rating import st_star_rating
 import time
 import os
 import requests
