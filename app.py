@@ -77,6 +77,6 @@ if question:
             temp = pd.DataFrame({'question':[question],'response':[response.text],'evaluation':[evaluation]})
             new_df = pd.concat([df,temp])[['question','response','evaluation']]
             wks.set_dataframe(new_df, 'A1')
-            else:
-                pass
+        else:
+            pass
     
