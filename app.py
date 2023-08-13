@@ -57,9 +57,10 @@ if question:
 ## Loading
 spreadsheet_key = "1lvIK4MoqqRLeIFe4XstOF8GKxpuuB9mFeauMho6jgjw"
 scope = "https://spreadsheets.google.com/feeds"
-st.write(st.secrets["gcp_service_account"])
-st.write(type(st.secrets["gcp_service_account"]))
-credentials_json = json.loads(json.dumps(toml.loads(open(str(st.secrets["gcp_service_account"])).read())))
+step_1 = str(st.secrets["gcp_service_account"])
+step_2 = open(step_1)
+step_3 = toml.loads(step_2)
+#credentials_json = json.loads(json.dumps(toml.loads(open(str(st.secrets["gcp_service_account"])).read())))
 credentials = ServiceAccountCredentials.from_json_keyfile_dict(credentials_json, scope)
 worksheet = gspread.authorize(credentials).open_by_key(spreadsheet_key).worksheet("Feuille 1")
 data = worksheet.get_all_values()
