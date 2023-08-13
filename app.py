@@ -65,7 +65,7 @@ headers = data.pop(0)
 df = pd.DataFrame(data, columns=headers)
 st.dataframe(df)
 ## Updating
-gc = pygsheets.authorize(service_file='./rullama-12d502af5c88.json')
+gc = pygsheets.authorize(service_file='./rullama_rd_data.toml')
 sh = gc.open_by_url('https://docs.google.com/spreadsheets/d/1lvIK4MoqqRLeIFe4XstOF8GKxpuuB9mFeauMho6jgjw/edit#gid=0')
 wks = sh[0]
 
