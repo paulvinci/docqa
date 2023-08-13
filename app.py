@@ -58,6 +58,7 @@ if question:
 spreadsheet_key = "1lvIK4MoqqRLeIFe4XstOF8GKxpuuB9mFeauMho6jgjw"
 scope = "https://spreadsheets.google.com/feeds"
 step_1 = str(st.secrets["gcp_service_account"])
+st.write(step_1)
 step_2 = open(step_1)
 step_3 = toml.loads(step_2)
 #credentials_json = json.loads(json.dumps(toml.loads(open(str(st.secrets["gcp_service_account"])).read())))
