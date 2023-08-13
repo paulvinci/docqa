@@ -71,7 +71,7 @@ wks = sh[0]
 
 if question:
     if response:
-        evaluation = st_star_rating(label="Please rate the relevance of the answer", maxValue=5, defaultValue=3, key="rating", reset_button=True )
+        evaluation = st_star_rating(label="Please rate the relevance of the answer", maxValue=5, defaultValue=3, key="rating")
         if evaluation:
             if evaluation == 'liked' or evaluation == 'disliked':
                 score_dict = {'liked':1,'disliked':0}
