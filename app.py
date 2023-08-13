@@ -46,7 +46,7 @@ def llm_inference(url):
     return response, exec_time
 
 # Query through LLM    
-ngrok_url = "https://065e-81-67-151-153.ngrok-free.app"
+ngrok_url = "https://58f8-2001-861-3f45-8770-cd70-35a3-852-5b94.ngrok-free.app"
 question = st.text_input("Ask something from the files provided as context")    
 if question:
     url = f'{ngrok_url}/search?query={question}'
