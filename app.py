@@ -6,14 +6,16 @@ from streamlit_text_rating.st_text_rater import st_text_rater
 from streamlit_star_rating import st_star_rating
 import time
 import os
-import requests
 from langchain.document_loaders import TextLoader, Docx2txtLoader
-from langchain.vectorstores import FAISS
+from langchain.vectorstores import Chroma, FAISS
 from langchain.chains import LLMChain
-from langchain.llms import OpenAI
-from langchain.embeddings import OpenAIEmbeddings
+from langchain.llms import LlamaCpp
+from langchain.embeddings import LlamaCppEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.callbacks.manager import CallbackManager
+from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain import PromptTemplate
+import requests
 import pandas as pd
 import gspread 
 from oauth2client.service_account import ServiceAccountCredentials
@@ -46,7 +48,7 @@ def llm_inference(url):
     return response, exec_time
 
 # Query through LLM    
-ngrok_url = "https://579c-2001-861-3f45-8770-6051-7ece-66d0-8a.ngrok-free.app"
+ngrok_url = "https://6c6f-81-67-151-153.ngrok-free.app"
 question = st.text_input("Ask something from the files provided as context")    
 if question:
     url = f'{ngrok_url}/search?query={question}'
